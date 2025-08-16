@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        Connect.main(new String[]{});
         String path = "./java.db";
         String url = "jdbc:sqlite:" + path;
         UserDO.UserDAI userDAO = QueryTool.getQuery(DriverManager.getConnection(url), UserDO.UserDAI.class);
@@ -21,5 +22,6 @@ public class Main {
             System.out.println("User: " + u.name);
         }
         userDAO.delete(1);
+        Connect.delete(); // This is a temporal solution & must be reimplemented before production
     }
 }
